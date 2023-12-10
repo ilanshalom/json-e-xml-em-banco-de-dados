@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Processa JSON</title>
+    <style>
+        body {
+           font-family: Calibri;
+        }
+    </style>
+
+    <script src="jquery.js"></script>
+
+    <script type="text/javascript">
+            $(function(){
+                $.getJSON("http://mfpledon.com.br/cafeteriaJSON4.php",
+                    function (dados) {
+                        var N = dados.length;
+                        for (i = 0; i < N; i++) {
+                            $("#divresultados").append(
+                                dados[i].codigo + " - "
+                                + dados[i].nome + " - "
+                                + dados[i].tipo + " - "
+                                + dados[i].preco + "<br>");
+                        }
+                    });   
+                });
+     </script> 
+</head>
+<body>
+    <h2>Exemplo de processamento JSON </h2>
+    <div>
+        Exemplo de processamento JSON retornado por um servidor remoto: http://mfpledon.com.br/cafeteriaJSON4.php. <br/>
+        O servidor retorna os dados dos itens oferecidos em uma cafeteria fictícia ou restaurante.
+    </div>
+    <br/>
+    <div id="divresultados"></div>
+    <br/><br/>
+</body>
+</html>

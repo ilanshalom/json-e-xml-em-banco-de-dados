@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Processa JSON</title>
+    <style>
+        body {
+           font-family: Calibri;
+        }
+    </style>
+
+    <script src="jquery.js"></script>
+
+    <script type="text/javascript">
+            $(function(){
+                $.getJSON("https://localhost:44312/geraJSON.aspx",
+                    function (dados) {
+                        var N = dados.length;
+                        for (i = 0; i < N; i++) {
+                            $("#divresultados").append(
+                                dados[i].Nomeprod + " - "
+                                + dados[i].Nomecategoria + " - R$ "
+                                + dados[i].Preco + "<br>");
+                        }
+                    });   
+                });
+     </script> 
+</head>
+<body>
+    <h2>Exemplo de processamento JSON </h2>
+    <div>Exemplo de processamento JSON retornado por um servidor remoto. <br/>O servidor retorna os dados dos itens oferecidos em uma cafeteria ou restaurante.</div>
+    <br/>
+    <div id="divresultados"></div>
+    <br/><br/>
+</body>
+</html>
